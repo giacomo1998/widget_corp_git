@@ -1,7 +1,6 @@
 <?php require_once("../includes/session.php"); ?>
 <?php require_once("../includes/db_connection.php"); ?>
 <?php require_once("../includes/functions.php"); ?>
-<?php $layout_context = "admin"; ?>
 <?php include("../includes/layouts/header.php"); ?>
 <?php find_selected_page(); ?>
 
@@ -9,7 +8,7 @@
   <div id="navigation">
 		<br />
 		<a href="admin.php">&laquo; Main menu</a><br />
-
+		
 		<?php echo navigation($current_subject, $current_page); ?>
 		<br />
 		<a href="new_subject.php">+ Add a subject</a>
@@ -23,11 +22,11 @@
 			Visible: <?php echo $current_subject["visible"] == 1 ? 'yes' : 'no'; ?><br />
 			<br />
 			<a href="edit_subject.php?subject=<?php echo urlencode($current_subject["id"]); ?>">Edit Subject</a>
-
+			
 			<div style="margin-top: 2em; border-top: 1px solid #000000;">
 				<h3>Pages in this subject:</h3>
 				<ul>
-				<?php
+				<?php 
 					$subject_pages = find_pages_for_subject($current_subject["id"]);
 					while($page = mysqli_fetch_assoc($subject_pages)) {
 						echo "<li>";
@@ -55,7 +54,7 @@
 			<br />
       <br />
       <a href="edit_page.php?page=<?php echo urlencode($current_page['id']); ?>">Edit page</a>
-
+			
 		<?php } else { ?>
 			Please select a subject or a page.
 		<?php }?>
